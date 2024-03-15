@@ -1,0 +1,19 @@
+python
+import socket
+import json
+# UDP IP and port of the receiver
+UDP_IP = "192.168.10.252"  # Replace with the receiver's IP address
+UDP_PORT = 5005  # Replace with the UDP port number
+# Create a UDP socket
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+def send_udp_message(data):
+    try:
+        # Send data over UDP
+        sock.sendto(json.dumps(data).encode(), (UDP_IP, UDP_PORT))
+        print("Data sent successfully")
+    except Exception as e:
+        print("Error sending data:", str(e))
+# Example data to be sent
+data = {"entity_id": "sensor.hlavni_dvere_operator", "value":}
+# Send the data
+send_udp_message(data)
